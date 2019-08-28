@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bong Den</title>
+</head>
+<body>
+
+<script>
+    function Bongden() {
+        this.status = false;
+        this.turnOn = function () {
+            if (this.status) {
+                console.log('den bat')
+            }
+        };
+        this.turnOff = function () {
+            if (!this.status) {
+                console.log('den tat')
+            }
+        }
+    }
+
+    function Congtac() {
+        this.connect = null;
+        this.status = false;
+        this.connect = function (connect) {
+            this.connect = connect;
+        };
+        this.on = function () {
+            this.status = true;
+            this.connect.status = this.status;
+            this.connect.turnOn();
+        };
+        this.off = function () {
+            this.status = false;
+            this.connect.status = this.status;
+            this.connect.turnOff();
+        }
+
+    }
+
+    let bongden = new Bongden();
+    let congtac =new  Congtac();
+    congtac.connect(bongden);
+    congtac.on();
+    congtac.off();
+</script>
+</body>
+</html>
